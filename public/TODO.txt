@@ -7,3 +7,5 @@ add search for initials in votreport (which is really a log)
 add suggestions
 
 consider showing checkmark when VOT assigned
+
+settings paage
