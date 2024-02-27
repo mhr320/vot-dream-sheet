@@ -56,6 +56,7 @@
             <?php if(Auth::getRole() == 'super_admin' || Auth::getRole() == 'admin'):?>
               <li><a class="dropdown-item" href="../public/profile">PROFILE</a></li>
               <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="../public/vot_pp">VOT x PP</a></li>
               <li><a class="dropdown-item" href="../public/payperiod">BUILD PP</a></li>
               <li><a class="dropdown-item" href="../public/votreport">VOT LOG</a></li>
               <li><a class="dropdown-item" href="#">FOT UPDATE</a></li>

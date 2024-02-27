@@ -39,6 +39,15 @@
 			</div>
 
 			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="vot_pp">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-regular fa-calendar-check"></i></h1></center>
+					    <p class="card-text text-center">VOT by Pay Period</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
 				<a href="payperiod">
 					<div class="card-body">
 						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-regular fa-clipboard"></i></h1></center>

@@ -11,3 +11,5 @@ consider showing checkmark when VOT assigned
 settings page
 
 add delete/edit to FAQ for admin,super
+
+create after select for Vot_pp $rows, need to remove Shift_del = 1

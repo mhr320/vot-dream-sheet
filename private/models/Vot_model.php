@@ -17,7 +17,7 @@ class Vot_model extends Model
 	{
 		$query = addslashes($column);
 
-		$query = "select id,date,shift,ois,shift_del from $this->table where $column = :value order by date $orderby"; 
+		$query = "select id,date,shift,ois,shift_del from $this->table where $column = :value and shift_del != 1 order by date $orderby"; 
 		
 		$data = $this->query($query,['value'=>$value,]);
 
@@ -43,44 +43,6 @@ class Vot_model extends Model
 		$vol = new Vot_model();
 		$rows = $vol->whereVOT('ois',$_SESSION['USER']->ois,'asc');
 
-		//check rdo selected
-		// if (isset($_POST["rdos"])) {
-		//     if (!filter_input(INPUT_POST, "rdos") === false) {
-		//     	$days = explode("-",$_POST['rdos']);
-		//     	// show($days);
-		//     } else {
-		//         $errors['rdos'] = "RDO was not selected";
-		//     }
-		// }
-		//check month selected
-		// if (isset($_POST["months"])) {
-		//     if (!filter_input(INPUT_POST, "months") === false) {
-		// 		$rdos = get_rdos_only($days,$_POST['months']);
-		//     } else {
-		//         $errors['month'] = "Month was not selected";
-		//     }
-		// }
-		//check for shift 
-		// if (isset($_POST["shift"])) {
-		//     if (!filter_input(INPUT_POST, "shift") === false) {
-		//     	$vot['shift'] 	=	$_POST['shift'];
-		//     } else {
-		//         $errors['shifts'] = "Shift was not selected";
-		//     }
-		// }
-		//check for vot selected 
-		// if (isset($_POST["votday"])) {
-
-		//     if (!filter_input(INPUT_POST, "votday") === false) {
-		// 		$vot['date'] 	= 	$_POST['votday'];
-		// 		$vot['ois'] 	= 	strtolower($_SESSION['USER']->ois);
-		//     } else {
-		//         $errors['month'] = "Date was not selected";
-		//     }
-		// }
-		
-		
-		//check if shift exists 
 			foreach($rows as $key => $val){
 
 				if($DATA['shift'] == $val->shift && $DATA['ois'] == $val->ois && $DATA['date'] == $val->date && $val->shift_del == 0){
@@ -107,7 +69,6 @@ class Vot_model extends Model
 			{
 				$this->errors['date'] = "You did not pick date. Try Again!";
 			}
-
 		
 		if(count($this->errors) == 0)
 		{	
@@ -115,8 +76,6 @@ class Vot_model extends Model
 		}
 
 		return false;
-
-
 	}
 
 
@@ -143,6 +102,10 @@ class Vot_model extends Model
 			// show($data,$d="Data from beforeInsert");
 		}
 		return $this->query($query, $data);
+
+	}
+
+	public function getVotByPayPer() {
 
 	}
 
