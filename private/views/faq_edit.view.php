@@ -2,7 +2,6 @@
 <?php $this->view('includes/nav')?>
 <div class="container-fluid" style="margin-top: 60px;">
 
-<?php if(Auth::isAdmin() || Auth::isSuper()): ?>
 <h1 class="text-center">Edit FAQ Question</h1>
 			<div class="container-fluid" style="width: 600px;">
 				<form method="post">
@@ -18,7 +17,6 @@
 				<button class="btn btn-dark">Return To FAQs</button>
 				<a>
 			</div>
-		<?php endif; ?>
 </div>
 
 <?php $this->view('includes/footer')?>

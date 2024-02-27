@@ -70,7 +70,6 @@ class Faq extends Controller
 
 					$faq->faqUpdate($id, $data);
 
-					$this->redirect(ROOT."/faq");
 				}
 
 				

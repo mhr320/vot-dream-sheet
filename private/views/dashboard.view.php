@@ -21,15 +21,6 @@
 		<div class="row justify-content-center p-4">
 
 			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
-				<a href="profile">
-					<div class="card-body">
-						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa fa-id-card"></i></h1></center>
-					    <p class="card-text text-center">Profile</p>
-					</div>
-				</a>
-			</div>
-
-			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
 				<a href="volunteerot">
 					<div class="card-body">
 						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-clipboard-check"></i></i></h1></center>
@@ -37,16 +28,6 @@
 					</div>
 				</a>
 			</div>
-
-			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
-				<a href="seniority">
-					<div class="card-body">
-						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-arrow-down-1-9"></i></h1></center>
-					    <p class="card-text text-center" style="font-size: 18px;font-weight: bold;">Seniority</p>
-					</div>
-				</a>
-			</div>
-
 
 			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
 				<a href="votreport">
@@ -71,15 +52,6 @@
 					<div class="card-body">
 						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-people-pulling"></i></i></h1></center>
 					    <p class="card-text text-center">FOT Update</p>
-					</div>
-				</a>
-			</div>
-
-			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
-				<a href="settings">
-					<div class="card-body">
-						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa fa-cogs"></i></h1></center>
-					    <p class="card-text text-center">Settings</p>
 					</div>
 				</a>
 			</div>
@@ -121,13 +93,76 @@
 			</div>
 
 			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="settings">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa fa-cogs"></i></h1></center>
+					    <p class="card-text text-center">Settings</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
 				<a href="passwordupdate">
 					<div class="card-body">
 						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-key"></i></h1></center>
 					    <p class="card-text text-center" style="font-size: 15px;">Update User Password</p>
 					</div>
 				</a>
-			</div
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
+				<a href="#">
+					<div class="card-body">
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-folder"></i></h1></center>
+					    <p class="card-text text-center">AVAILABLE</p>
+					</div>
+				</a>
+			</div>
 
 
 		</div>
