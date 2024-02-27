@@ -9,3 +9,5 @@ add suggestions
 consider showing checkmark when VOT assigned
 
 settings page
+
+add delete/edit to FAQ for admin,super

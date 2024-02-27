@@ -85,10 +85,10 @@
 			</div>
 
 			<div class="card my-2 shadow rounded me-3" style="width: 16rem;">
-				<a href="<?=ROOT?>/logout">
+				<a href="faq">
 					<div class="card-body">
-						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></i></h1></center>
-					    <p class="card-text text-center">Logout</p>
+						<center><h1 class="card-title p-1" style="font-size: 80px;"><i class="fa-regular fa-circle-question"></i></h1></center>
+					    <p class="card-text text-center">FAQ</p>
 					</div>
 				</a>
 			</div>
@@ -127,7 +127,8 @@
 					    <p class="card-text text-center" style="font-size: 15px;">Update User Password</p>
 					</div>
 				</a>
-			</div>
+			</div
+
 
 		</div>
 	</div>
