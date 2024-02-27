@@ -36,45 +36,15 @@
           <li class="nav-item">
             <a class="nav-link" href="../public/dashboard">DASHBOARD</a>
           </li>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                ADMIN
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="../public/payperiod">BUILD PP</a></li>
-                <li><a class="dropdown-item" href="../public/votreport">VOT LOG</a></li>
-                <li><a class="dropdown-item" href="#">FOT UPDATE</a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="../public/settings">SETTINGS</a></li>
-                <li><a class="dropdown-item" href="#">EMAIL</a></li>
-                <li><a class="dropdown-item" href="#">LANDING MSG</a></li>
-                <li><a class="dropdown-item" href="../public/faq">FAQ</a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="../public/signup">ADD USER</a></li>
-                <li><a class="dropdown-item" href="../public/passwordupdate">EDIT USER P/W</a></li>
-                <li><a class="dropdown-item" href="#">AVAIL</a></li>
-                <li><a class="dropdown-item" href="#">AVAIL</a></li>
-              </ul>
-            </li>
-          </ul>
-
         <?php endif;?>
         <?php if(Auth::logged_in()):?>
-        <li class="nav-item">
-          <a class="nav-link" href="../public/volunteerot">VOT SIGNUP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../public/seniority">SENIORITY</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">SUGGESTIONS</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../public/volunteerot">VOT SIGNUP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../public/seniority">SENIORITY</a>
+          </li>
         <?php endif;?>
-        
-        
-        
-       
       </ul>
       <?php if(Auth::logged_in()):?>
       <ul class="navbar-nav ms-auto">
@@ -86,6 +56,20 @@
             <?php if(Auth::getRole() == 'super_admin' || Auth::getRole() == 'admin'):?>
               <li><a class="dropdown-item" href="../public/profile">PROFILE</a></li>
               <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="../public/payperiod">BUILD PP</a></li>
+              <li><a class="dropdown-item" href="../public/votreport">VOT LOG</a></li>
+              <li><a class="dropdown-item" href="#">FOT UPDATE</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="../public/settings">SETTINGS</a></li>
+              <li><a class="dropdown-item" href="#">EMAIL</a></li>
+              <li><a class="dropdown-item" href="#">LANDING MSG</a></li>
+              <li><a class="dropdown-item" href="../public/faq">FAQ</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="../public/signup">ADD USER</a></li>
+              <li><a class="dropdown-item" href="../public/passwordupdate">EDIT USER P/W</a></li>
+              <li><a class="dropdown-item" href="#">AVAIL</a></li>
+              <li><a class="dropdown-item" href="#">AVAIL</a></li>
+              <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="<?=ROOT?>/logout">LOGOUT</a></li>
             <?php else:?>
               <li><a class="dropdown-item" href="../public/profile">PROFILE</a></li>
@@ -93,7 +77,6 @@
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="<?=ROOT?>/logout">LOGOUT</a></li>
             <?php endif;?>
-
           </ul>
         </li>
       </ul>
