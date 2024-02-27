@@ -16,5 +16,5 @@
 		</div>
 	</div>
 </div>
-
+<!-- Comment to check git -->
 <?php $this->view('includes/footer')?>
