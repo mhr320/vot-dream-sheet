@@ -8,4 +8,4 @@ add suggestions
 
 consider showing checkmark when VOT assigned
 
-settings paage
+settings page
