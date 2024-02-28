@@ -108,6 +108,33 @@ function views_path($view, $data = array())
 		}
 }
 
+function getVolDays($pay_pers, $rows, $pp){
+
+	$volunteerDays = array();
+
+	foreach($pay_pers[$pp] as $day) {
+
+		foreach($rows as $k => $v) {
+
+		 	if(strtotime($day) == strtotime($v->date) ) {
+
+		 		$eachDay = [];
+		 		
+		 		$votDate								=	$day;
+		 		$votShift								=	$v->shift;
+		 		$votOis								=	$v->ois;
+
+		 		$eachDay['date']				=	$votDate;
+		 		$eachDay['shift']					=	$votShift;
+		 		$eachDay['ois']					=	$votOis;
+
+		 		$volunteerDays[]				=	$eachDay;
+		 	}
+		 }
+	}
+	return $volunteerDays;
+}
+
 function show($print_r, $display_name = '')
 {
 
