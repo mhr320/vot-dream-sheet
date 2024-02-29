@@ -116,13 +116,13 @@ function getVolDays($pay_pers, $rows, $pp){
 
 		foreach($rows as $k => $v) {
 
-		 	if(strtotime($day) == strtotime($v->date) ) {
+		 	if(strtotime($day) == strtotime($v->date) && (int)$v->shift_del != 1 ) {
 
 		 		$eachDay = [];
 
 		 		$eachDay['date']				=	$day;
 		 		$eachDay['shift']				=	$v->shift;
-		 		$eachDay['ois']				=	$v->ois;
+		 		$eachDay['ois']					=	$v->ois;
 
 		 		$volunteerDays[]				=	$eachDay;
 		 	}
