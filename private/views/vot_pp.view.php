@@ -77,31 +77,10 @@
 
 <?php //testing area
 
-	function testGetVolDays($pay_pers, $rows, $pp){
-		$volunteerDays = array();
-		foreach($pay_pers[$pp] as $day) {
-			foreach($rows as $k => $v) {
-			 	if(strtotime($day) == strtotime($v->date) && (int)$v->shift_del != 1 ) {
+		// show($pay_pers[$payPeriod]);
+		// show($rows);
+		show($vol);
 
-			 		$eachDay = [];
-
-			 		$eachDay[$day]					=	$v->ois.",".$v->shift;
-
-			 		$volunteerDays[]					=	$eachDay;
-			 	}
-			 }
-		}
-		return $volunteerDays;
-	}
-
-		$payPeriod 				= 	'pp9';
-		$test_vol 					= 	testGetVolDays($pay_pers, $rows, $payPeriod); 
-
-		show($test_vol, "TEST VOL");
-
-		// $array = ['date1'=>'nothing','date2'=>'something'];
-
-		// show($array);
 ?>
 
 <?php $this->view('includes/footer')?>

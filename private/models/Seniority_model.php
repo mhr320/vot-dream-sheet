@@ -103,7 +103,7 @@ class Seniority_model extends Model
 		return $data;
 	}
 
-	public function getSenRank($ois) //this should be $_SESSION['USER'] eventually
+	public function getSenRank($ois) 
 	{
 		$rot = checkOddEven(idate('Y'));
 
