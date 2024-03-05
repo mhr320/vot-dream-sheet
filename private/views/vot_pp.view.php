@@ -3,106 +3,122 @@
 
 
 <?php 
-			$payPeriod 				= 	'pp9';
-			$vol 							= 	getVolDays($pay_pers, $rows, $payPeriod); 
-			$pp 							= 	explode('p',$payPeriod);
-		?>
+
+	$payPeriod 				= 	'pp9';
+	$vol 							= 	getVolDays($pay_pers, $rows, $payPeriod); 
+	$pp 							= 	explode('p',$payPeriod);
+
+?>
 
 <div class="mx-auto shadow rounded text-center bg-light justify-content-center container-fluid" style="min-width: 350px;margin-top: 60px;width:80%;">
-
+<!-- 
 	<h1 class="p-3">Area 3 Volunteer Overtime by Pay Period</h1><br>
 	<h3><?='Pay Period '.$pp[2]?></h3>
 
-	<table class="table">
-		<tr><th>Date</th><th>AM</th><th>PM</th><th>Mid</th></tr>
+	<table class="table table-bordered"> -->
+		<!-- <tr><th>Date</th><th>AM</th><th>PM</th><th>Mid</th></tr> -->
+
 				<?php foreach( $vol as $v ):?>
-					<tr><th class="align-middle"><?=$v['date']?></th>
+
+					<!-- <tr><th class="align-middle"><?=$v['date']?></th> -->
 
 								<?php if($v['shift'] == 'am' && $v['shift'] != 'pm' && $v['shift'] != 'mid'):?>
-									<td>
-									<table class="table table-borderless">
+									<!-- <td>
+									<table class="table table-bordered">
 									<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
 									</table>
 									</td>
 									<td>
-									<table class="table table-borderless">
+									<table class="table table-bordered">
 									</table>
 									</td>
 									<td>
-									<table class="table table-borderless">
+									<table class="table table-bordered">
 									</table>
-									</td></tr>
+									</td></tr> -->
 								<?php endif;?>
 
 								<?php if ( $v['shift'] == 'pm'  && $v['shift'] != 'am' && $v['shift'] != 'mid'):?>
-									<td>
-									<table class="table table-borderless">
+									<!-- <td>
+									<table class="table table-bordered">
 									</table>
 									</td>
 									<td>
-									<table class="table table-borderless">
+									<table class="table table-bordered">
 										<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
 									</table>
 									</td>
 									<td>
-									<table class="table table-borderless">
+									<table class="table table-bordered">
 									</table>
 									</td>
-									</tr>
+									</tr> -->
 								<?php endif;?>
 
 								<?php if ( $v['shift'] == 'mid'  && $v['shift'] != 'am' && $v['shift'] != 'pm'):?>
-								<td>
-								<table class="table table-borderless">
+								<!-- <td>
+								<table class="table table-bordered">
 								</table>
 								</td>
 								<td>
-								<table class="table table-borderless">
+								<table class="table table-bordered">
 								</table>
 								</td>
 								<td>
-								<table class="table table-borderless">
+								<table class="table table-bordered">
 									<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
 								</table>
 								</td>
-								</tr>
+								</tr> -->
 							<?php endif;?>
 									
 						
 					<!-- </tr> -->
 				<?php endforeach;?>
-				</table><br>
+				<!-- </table><br> -->
 </div> 
 
 
 <?php //testing area
 
-		function testGetVolDays($pay_pers, $rows, $pp){
+// function get_vd ( $arr1 = [ ], $arr2 = [ ] ) {
+// 	$dates 	= [ ];
+// 	$vdates 	= [ ];
+// 	foreach ( $arr1 as $k => $day ) {
+// 		foreach ( $arr2 as $key => $vday ) {
+// 			if ( strtotime ( $day ) === strtotime ( $vday [ 'date' ] ) ) {
+// 					$vdates[ $day ] =  [ ];
+// 			} 
+// 		}
+// 	}
+// 	$dates[ ] = $vdates;
+// 	return $dates;
+// }
 
-			$volunteerDays = array();
+// $volDates = get_vd($pay_pers['pp9'], $vol);
+// show ($volDates);
 
-			foreach($pay_pers[$pp] as $day) {
 
-				foreach($rows as $k => $v) {
 
-				 	if(strtotime($day) == strtotime($v->date) && (int)$v->shift_del != 1 ) {
+$arr = [];
 
-				 		$eachDay = [];
-				 		$eachDay['date']				=	$v->date;
-				 		$eachDay['shift']				=	$v->shift;
-				 		$eachDay['ois']					=	$v->ois;
+foreach ( $vol as $k => $v ) {
+	$arr[$v['date']] .= $v['shift']."-".$v['ois'].",";
+}
+show($arr);
 
-				 		$volunteerDays[]				=	$eachDay;
-				 	}
-				 }
-			}
-			return $volunteerDays;
-		}	
-		
-		$payPeriod 				= 	'pp9';
-		$vol_test					= 	TestGetVolDays($pay_pers, $rows, $payPeriod);
+foreach( $arr as $s ) {
+	$shifts = explode(',', trim($s,','));
+	show($shifts);
+}
 
-		show($vol_test);
+foreach ( $shifts as $vs ) {
+	if (str_contains($vs, 'am-') ) {
+		$ois = explode('-', $vs);
+		echo $ois[1]. " Wants to work an ".strtoupper($ois[0]);
+	}
+
+}
 
 ?>
 
