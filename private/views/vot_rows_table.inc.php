@@ -54,7 +54,7 @@
 
 		$payperiods = get_payperiods('17 Dec 2023', '30 Dec 2023');
 
-		$plus_days = strtotime("+48 days", $today);
+		$plus_days = strtotime("+48 days", (int)$today);
 	?>
 		<?php if($plus_days >= $db):?>
 			<i class='fa-solid fa-lock float-end p-1' style='color: black;font-size: 20px; margin-right: 5px;'></i>

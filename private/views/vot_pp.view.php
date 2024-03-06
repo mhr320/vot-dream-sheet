@@ -103,7 +103,12 @@
 $arr = [];
 
 foreach ( $vol as $k => $v ) {
-	$arr[$v['date']] .= $v['shift']."-".$v['ois'].",";
+
+	$vdate = $v['date'] ?? "";
+	$vshift = $v['shift'] ?? "";
+	$vois = $v['ois'] ?? "";
+
+	@$arr[$vdate] .= $vshift."-".$vois.",";	//@ suppresses the errror undefined array type
 }
 show($arr);
 
@@ -112,10 +117,11 @@ foreach( $arr as $s ) {
 	show($shifts);
 }
 
-foreach ( $shifts as $vs ) {
-	if (str_contains($vs, 'am-') ) {
-		$ois = explode('-', $vs);
-		echo $ois[1]. " Wants to work an ".strtoupper($ois[0]);
+foreach ( $shifts as $volshift => $vois ) {
+	if (str_contains($vois, 'mid') ) {
+	// echo $vs;
+		$ois = explode('-', $vois);
+		echo strtoupper($ois[1]). " Wants to work ".strtoupper($ois[0]);
 	}
 
 }

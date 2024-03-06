@@ -58,6 +58,7 @@ class Volunteerot extends Controller
 				}
 
 		} 
+		// show($rows);
 // show($_POST,'POST says ->');
 		echo $this->view('volunteerot',[
 		'rows'		=> 	$rows,
