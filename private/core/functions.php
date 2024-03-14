@@ -159,6 +159,7 @@ function showv($var_dump, $display_name = '')
 function volunteerShiftByDay($vol = array()) {
 	$arr 		= [];
 	$shifts = [];
+	$try = [];
 
 	foreach ( $vol as $k => $v ) {
 
@@ -168,22 +169,23 @@ function volunteerShiftByDay($vol = array()) {
 
 		@$arr[$vdate] .= $vshift."-".$vois.",";	//@ suppresses the errror undefined array type
 	}
+
 	foreach( $arr as $day => $vols ) {
-		$shifts[$day] = explode(',', trim($vols,','));
+
+		$shiftOis = explode('-', $vols);
+
+		$shft = $shiftOis[0];
+		$ois = $shiftOis[1];
+
+		$try[] = $shft .$ois.',';
+
+		$shifts[$day] = $try;
+
 	}
-	foreach ( $shifts as $date => $volShift ) {
-		foreach ( $volShift as $shiftOis) {
-			// if(str_contains($shiftOis,'am-')) {
-			// 	$split = explode ( '-', $shiftOis );
-			// 	echo strtoupper($split[1]) . " Wants to work " .strtoupper($split[0]). " Shift on ". $date."<br><br>";
-			// } elseif (str_contains($shiftOis,'pm-')){
-			// 	$split = explode ( '-', $shiftOis );
-			// 	echo strtoupper($split[1]) . " Wants to work " .strtoupper($split[0]). " Shift on ". $date."<br><br>";
-			// } elseif (str_contains($shiftOis,'mid-')){
-			// 	$split = explode ( '-', $shiftOis );
-			// 	echo strtoupper($split[1]) . " Wants to work " .strtoupper($split[0]). " Shift on ". $date."<br><br>";
-			// }
-		}
-	}
+	
+
 	return $shifts;
 }
+
+
+// explode ( ',', trim ( $splitem[1] , ',' ) ) ;

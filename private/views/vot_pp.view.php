@@ -14,72 +14,21 @@ $volunteers 	= volunteerShiftByDay($vol);
 
 <div class="mx-auto shadow rounded text-center bg-light justify-content-center container-fluid" style="min-width: 350px;margin-top: 60px;width:80%;">
 
-	<h1 class="p-3">Area 3 Volunteer Overtime by Pay Period</h1><br>
+	<!-- <h1 class="p-3">Area 3 Volunteer Overtime by Pay Period</h1><br>
 	<h3><?='Pay Period '.$pp[2]?></h3>
 
-	<table class="table table-bordered">
-		<tr><th>Date</th><th>AM</th><th>PM</th><th>Mid</th></tr>
+		<table class="table table-bordered">
+			<tr><th>Date</th><th>AM</th><th>PM</th><th>Mid</th></tr> -->
 
-				<?php foreach( $vol as $v ):?>
-
-					<tr><th class="align-middle"><?=$v['date']?></th>
-
-								<?php if($v['shift'] == 'am' && $v['shift'] != 'pm' && $v['shift'] != 'mid'):?>
-									<td>
-									<table class="table table-bordered">
-									<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
-									</table>
-									</td>
-									<td>
-									<table class="table table-bordered">
-									</table>
-									</td>
-									<td>
-									<table class="table table-bordered">
-									</table>
-									</td></tr>
-								<?php endif;?>
-
-								<?php if ( $v['shift'] == 'pm'  && $v['shift'] != 'am' && $v['shift'] != 'mid'):?>
-									<td>
-									<table class="table table-bordered">
-									</table>
-									</td>
-									<td>
-									<table class="table table-bordered">
-										<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
-									</table>
-									</td>
-									<td>
-									<table class="table table-bordered">
-									</table>
-									</td>
-									</tr>
-								<?php endif;?>
-
-								<?php if ( $v['shift'] == 'mid'  && $v['shift'] != 'am' && $v['shift'] != 'pm'):?>
-								<td>
-								<table class="table table-bordered">
-								</table>
-								</td>
-								<td>
-								<table class="table table-bordered">
-								</table>
-								</td>
-								<td>
-								<table class="table table-bordered">
-									<tr><td class="fw-bold"><?=strtoupper($v['ois'])?></td></tr>
-								</table>
-								</td>
-								</tr>
-							<?php endif;?>
-				<?php endforeach;?>
-				</table><br>
+		<!-- </table> -->
+				
 </div> 
 
 
 <?php //testing area
-
+	// show($vol);
+	show($volunteers);
+	
 ?>
 
 <?php $this->view('includes/footer')?>
