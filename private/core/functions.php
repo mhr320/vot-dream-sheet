@@ -182,9 +182,10 @@ function transferCSV ( $file ) {
 	if ( ( $handle = fopen ( $file, 'r' ) ) !== FALSE ) {
 		while ( ( $data = fgetcsv ( $handle, 1000, "," ) ) !== FALSE ) {
 			$csv[] = [	
-							"mid_drop" =>$data[0],
-							"grp"=>$data[1],
-							"schedule"=>$data[2] .','.$data[3].','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8]
+							"ois" => $data[0],
+							"mid_drop" =>$data[1],
+							"grp"=>$data[2],
+							"schedule"=>$data[3] .','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8].','.$data[9],
 						];
 			$row++;
 		}
