@@ -44,6 +44,9 @@
           <li class="nav-item">
             <a class="nav-link" href="../public/seniority">SENIORITY</a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="../public/schedules">SCHEDULES</a>
+          </li>
         <?php endif;?>
       </ul>
       <?php if(Auth::logged_in()):?>
