@@ -160,32 +160,54 @@ function volunteerShiftByDay($vol = array()) {
 	$arr 		= [];
 	$shifts = [];
 	$try = [];
-
 	foreach ( $vol as $k => $v ) {
-
 		$vdate 	= $v['date'] ?? "";
 		$vshift 		= $v['shift'] ?? "";
 		$vois 		= $v['ois'] ?? "";
-
 		@$arr[$vdate] .= $vshift."-".$vois.",";	//@ suppresses the errror undefined array type
 	}
-
 	foreach( $arr as $day => $vols ) {
-
 		$shiftOis = explode('-', $vols);
-
 		$shft = $shiftOis[0];
 		$ois = $shiftOis[1];
-
 		$try[] = $shft .$ois.',';
-
 		$shifts[$day] = $try;
-
 	}
-	
-
 	return $shifts;
 }
 
+function transferCSV ( $file ) {
+	$row = 0;
+	$csv = [];
+	if ( ( $handle = fopen ( $file, 'r' ) ) !== FALSE ) {
+		while ( ( $data = fgetcsv ( $handle, 1000, "," ) ) !== FALSE ) {
+			$csv[] = [	
+							"mid_drop" =>$data[0],
+							"grp"=>$data[1],
+							"schedule"=>$data[2] .','.$data[3].','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8]
+						];
+			$row++;
+		}
+		return $csv;
+	}
+	fclose($handle);
+}
 
-// explode ( ',', trim ( $splitem[1] , ',' ) ) ;
+function countGRP( $arr = [], $grp ) {
+	$a=0;
+	foreach($arr as $line) {
+		if($line->grp === $grp) {
+			$a++;
+		}
+	}
+		return $a;
+}
+
+function getGrpCount($schedule = []) {
+	$groups = ['a','b','c','d','e','f','g'];
+	foreach($groups as $g) {
+		$count[$g] =  countGRP($schedule, $g);
+		$finalCount = $count;
+	}
+	return $finalCount;
+} 
