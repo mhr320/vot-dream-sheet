@@ -1,8 +1,8 @@
 <?php
 /**
- * Schedules controller
+ * Schedules_management controller
  */
-class Schedules extends Controller
+class Schedules_management extends Controller
 {
 	
 	function index()
@@ -27,7 +27,7 @@ class Schedules extends Controller
 	$schedule2 	= $schedules->scheduleFindAll(2);
 	$schedule3 	= $schedules->scheduleFindAll(3);
 		
-		echo $this->view('schedules', [
+		echo $this->view('schedules_management', [
 			'schedules1'=>$schedule1,
 			'schedules2'=>$schedule2,
 			'schedules3'=>$schedule3,
