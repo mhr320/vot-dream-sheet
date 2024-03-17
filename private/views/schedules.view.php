@@ -3,11 +3,11 @@
 <?php $i=1; $grpcount=0;?> 
 
 <div style="min-width: 350px;">
-	<h1 class="text-center" style="margin-top: 70px;">Area 3 2024</h1>
+	<h1 class="text-center" style="margin-top: 60px;margin-bottom: 4px;">Area 3 2024</h1>
 
 	<div class="row container-fluid justify-content-center">
-		<div class="col-4 p-4  rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
-			<table class="table  table-hover">
+		<div class="col-4 p-4 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
+			<table class="table table-hover">
 				<p class="h1 text-center">Trimester 1</p>
 				<p class="text-center">14 January - 27 April</p>
 				<tr class="table-dark"><th>#</th><th>OI</th><th></th><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
@@ -52,7 +52,7 @@
 			</table>
 		</div>
 		<?php $i=1;?>
-		<div class="col-4 p-4  rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
+		<div class="col-4 p-4 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
 			<table class="table  table-hover">
 				<p class="h1 text-center">Trimester 2</p>
 				<p class="text-center">28 April - 14 September</p>
@@ -99,7 +99,7 @@
 				<?php endforeach;?>
 			</table>
 		</div>
-		<div class="col-4 p-4  rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
+		<div class="col-4 p-4 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
 			<?php $i=1;?>
 				<table class="table  table-hover">
 					<p class="h1 text-center">Trimester 3</p>
