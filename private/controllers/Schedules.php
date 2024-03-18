@@ -13,6 +13,7 @@ class Schedules extends Controller
 		}
 
 	$schedules = new Schedules_model;
+	
 
 	// $file = ASSETS."/trimester_3.csv";
 
@@ -31,6 +32,7 @@ class Schedules extends Controller
 			'schedules1'=>$schedule1,
 			'schedules2'=>$schedule2,
 			'schedules3'=>$schedule3,
+			
 		]);
 	}
 }

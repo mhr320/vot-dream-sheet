@@ -4,7 +4,8 @@
  */
 class Schedules_management extends Controller
 {
-	
+	// public $table = "seniority";
+
 	function index()
 	{
 		if(!Auth::logged_in())
@@ -13,6 +14,14 @@ class Schedules_management extends Controller
 		}
 
 	$schedules = new Schedules_model;
+	$seniority = new Seniority_model;
+
+	$seniority_rows = $seniority->seniorityList();
+
+	// $query = "select * from $seniority->table where role != 'd' order by cbu asc, nbu asc, eod asc, scd asc, rot desc";
+
+	// $seniority_rows =  $seniority->query($query);
+
 
 	// $file = ASSETS."/trimester_3.csv";
 
@@ -27,10 +36,12 @@ class Schedules_management extends Controller
 	$schedule2 	= $schedules->scheduleFindAll(2);
 	$schedule3 	= $schedules->scheduleFindAll(3);
 		
+
 		echo $this->view('schedules_management', [
 			'schedules1'=>$schedule1,
 			'schedules2'=>$schedule2,
 			'schedules3'=>$schedule3,
+			'sen_data'=>$seniority_rows,
 		]);
 	}
 }
