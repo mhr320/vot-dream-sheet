@@ -1,29 +1,26 @@
 <?php $this->view('includes/header')?>
 <?php $this->view('includes/nav')?>
 
-<div class="container-fluid" style="margin-top: 60px;">
+<style>
+	mark {
+		background-color: #ff4d4d;
+	}
+</style>
+
+<div class="container-fluid" style="margin-top: 40px;">
 	<h2 class="text-center">Schedule Management</h2>
 	<div class="row container-fluid justify-content-center">
-
-		<div class="col-4 p-4 border border-3 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
+		<div class="col-4 p-4 border border-3 rounded" style="width:100%;max-width: 460px;background-color: white;">
 			<h3 class="text-center p-3">Trimester 1</h3>
 			<p class="fw-bold">Update controller line assignment</p>
 			<form method="post">
-
 				<div class="form-group">
-
 				<select class="form-control my-2" id="scheduleTri1">
-
 					<option>Select Trimester 1 Line</option>
-
 					<option></option>
-
 					<?php $n=1;?>
-
 					<?php foreach($schedules1 as $schedule):?>
-
 						<?php $line = str_replace(',', ' ', strtoupper($schedule->schedule));?>
-
 						<?php if($schedule->grp == "a"):?>
 							<option>
 								<?php if($n <=9) {
@@ -33,7 +30,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-							
 						<?php elseif($schedule->grp == "b"):?>
 							<option>
 								<?php if($n <=9) {
@@ -43,7 +39,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php elseif($schedule->grp == "c"):?>
 							<option>
 								<?php if($n <=9) {
@@ -53,7 +48,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php elseif($schedule->grp == "d"):?>
 							<option>
 								<?php if($n <=9) {
@@ -63,7 +57,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php elseif($schedule->grp == "e"):?>
 							<option>
 								<?php if($n <=9) {
@@ -73,7 +66,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php elseif($schedule->grp == "f"):?>
 							<option>
 								<?php if($n <=9) {
@@ -83,7 +75,6 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php elseif($schedule->grp == "g"):?>
 							<option>
 								<?php if($n <=9) {
@@ -93,13 +84,10 @@
 								}?>
 							</option>
 							<?php $n++?>
-
 						<?php endif?>
-
 						<?php 
 							$storedCountGRP = getGrpCount($schedules1);
 							$groups = ['a','b','c','d','e','f','g'];
-
 							foreach($groups as $g) {
 								if($schedule->grp == $g) {
 									$grpcount++;
@@ -110,8 +98,6 @@
 								} 
 							} ?>
 					<?php endforeach?>
-
-
 				</select>
 				<select class="form-control my-2">
 					<option>Select Controller</option>
@@ -119,6 +105,8 @@
 						<option><?=$ois->ois;?></option>
 					<?php endforeach?>
 				</select>
+				<button class="btn btn-sm btn-primary float-end">Update</button>
+				<br>
 				<hr>
 				<p class="fw-bold">Create New Trimester 1 Line</p>
 				<table class="table table-sm table-borderless align-middle">
@@ -133,19 +121,16 @@
 						<td><input class="form-control text-center" type="text" style="width: 20px;"></td>
 					</tr>
 				</table>
+					<button class="btn btn-sm btn-primary float-end">Create</button>
+					<br>
 				<hr>
 				<p class="fw-bold">Delete Trimester 1 Line</p>
 				<select class="form-control my-2" id="scheduleTri1">
-
 					<option>Select Trimester 1 Line</option>
-
 					<option></option>
 				<?php $n=1;?>
-
 				<?php foreach($schedules1 as $schedule):?>
-
 					<?php $line = str_replace(',', ' ', strtoupper($schedule->schedule));?>
-
 					<?php if($schedule->grp == "a"):?>
 						<option>
 							<?php if($n <=9) {
@@ -155,7 +140,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-						
 					<?php elseif($schedule->grp == "b"):?>
 						<option>
 							<?php if($n <=9) {
@@ -165,7 +149,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php elseif($schedule->grp == "c"):?>
 						<option>
 							<?php if($n <=9) {
@@ -175,7 +158,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php elseif($schedule->grp == "d"):?>
 						<option>
 							<?php if($n <=9) {
@@ -185,7 +167,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php elseif($schedule->grp == "e"):?>
 						<option>
 							<?php if($n <=9) {
@@ -195,7 +176,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php elseif($schedule->grp == "f"):?>
 						<option>
 							<?php if($n <=9) {
@@ -205,7 +185,6 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php elseif($schedule->grp == "g"):?>
 						<option>
 							<?php if($n <=9) {
@@ -215,13 +194,10 @@
 							}?>
 						</option>
 						<?php $n++?>
-
 					<?php endif?>
-
 					<?php 
 						$storedCountGRP = getGrpCount($schedules1);
 						$groups = ['a','b','c','d','e','f','g'];
-
 						foreach($groups as $g) {
 							if($schedule->grp == $g) {
 								$grpcount++;
@@ -233,17 +209,21 @@
 						} ?>
 				<?php endforeach?>
 					</select>
+					<button class="btn btn-sm btn-primary float-end">Delete</button>
+					<br>
+					<hr>
+					<p class="fw-bold">Upload trimester_1.csv</p>
+					<button class="btn btn-sm btn-primary float-end">Browse</button>
+					<br>
+					<hr>
+					<p class="fw-bold">Truncate Table <mark>WARNING!!!</mark></p>
+					<button class="btn btn-sm btn-danger float-end">Truncate</button>
 				</div>
 			</form>
-
 		</div>
-
 		<div class="col-4 p-4 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
-			
 		</div>
-
 		<div class="col-4 p-4 rounded" style="margin-top:60px;width:100%;max-width: 460px;background-color: white;">
-			
 		</div>
 	</div>
 </div>

@@ -21,11 +21,16 @@
     background: none;
     color: black !important;
   }
+  @media print {
+     nav {
+        display: none !important;
+      }
+    }
 </style>
-<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+<nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" id="noprint">
   <div class="container-fluid">
     <?php if(Auth::logged_in()):?>
-    <a class="navbar-brand" href="home">HOME</a>
+    <a class="navbar-brand" href="home" id="noprint">HOME</a>
     <?php endif;?>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
