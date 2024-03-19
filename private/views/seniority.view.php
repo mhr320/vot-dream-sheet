@@ -20,15 +20,35 @@
 		<tbody>
 			<?php $i=0;?>
 			<?php foreach($rows as $row):?>
+				<?php if(strtoupper($row->ois) == strtoupper($_SESSION['USER']->ois)):?>
+				<tr class="table-info">
+					<th class="text-center fw-bold"><?=++$i?></th>
+					<?php if($row->role != 'd'):?>
+					<td class="text-start fw-bold"><?=$row->nom?></td>
+					<?php else:?>
+					<td class="text-start fw-bold"><?=$row->nom.' ('.strtoupper($row->role).')'?></td>
+					<?php endif?>
+					<td class="text-center fw-bold"><?=$row->ois?></td>
+					<td class="text-end fw-bold"><?=$row->cbu?></td>
+					<td class="text-end fw-bold"><?=$row->nbu?></td>
+					<td class="text-end fw-bold"><?=$row->eod?></td>
+					<td class="text-end fw-bold"><?=$row->scd?></td>
+				</tr>
+			<?php else:?>
 				<tr>
 					<th class="text-center"><?=++$i?></th>
-					<td class="text-start"><?=$row->nom?></td>
+					<?php if($row->role != 'd'):?>
+					<td class="text-start fw-bold"><?=$row->nom?></td>
+					<?php else:?>
+					<td class="text-start fw-bold"><?=$row->nom.' ('.strtoupper($row->role).')'?></td>
+					<?php endif?>
 					<td class="text-center"><?=$row->ois?></td>
 					<td class="text-end"><?=$row->cbu?></td>
 					<td class="text-end"><?=$row->nbu?></td>
 					<td class="text-end"><?=$row->eod?></td>
 					<td class="text-end"><?=$row->scd?></td>
 				</tr>
+			<?php endif?>
 			<?php endforeach;?>
 		</tbody>
 	</table>
