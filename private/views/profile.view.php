@@ -6,9 +6,9 @@
 			<img src="./assets/cuphead" class="d-block mx-auto" style="width: 50%;">
 			<p class="text-center fs-4	 fw-bold mt-3 mb-1"><?=$_SESSION['USER']->nom ?> (<?=$place?>)</p>
 			<?php if(isset($_SESSION['USER']->mem)):?>
-				<p class="text-center fw-bold" style="font-size: 12px;">Member #: <?=$_SESSION['USER']->mem?></p>
+				<p class="text-center fw-bold" style="font-size: 12px;">NATCA #: <?=$_SESSION['USER']->mem?></p>
 			<?php elseif($_SESSION['USER']->mem == 0):?>
-				<p class="text-center fw-bold" style="font-size: 12px;">Member #: Missing</p>
+				<p class="text-center fw-bold" style="font-size: 12px;">NATCA #: Missing</p>
 			<?php endif?>
 
 		</div>

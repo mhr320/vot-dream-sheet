@@ -212,12 +212,26 @@
 					<button class="btn btn-sm btn-primary float-end">Delete</button>
 					<br>
 					<hr>
+				</form>
+				<form action="upload" method="post" enctype="multipart/form-data">
 					<p class="fw-bold">Upload trimester_1.csv</p>
-					<button class="btn btn-sm btn-primary float-end">Browse</button>
+
+					<?php if(count($errors) > 0):?>
+					<div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+		  				<strong>Errors:</strong> 
+		  				<?php foreach($errors as $error):?>
+		  				<br> <?=$error?>
+		 				<?php endforeach;?>
+		 				<span type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+		    				<span aria-hidden="true">&times;</span>
+		  				</span>
+					</div>
+					<?php endif;?>
+					
+					<input class="form-control mb-3" type="file" name="fileToUpload" id="fileToUpload">
+					<input class="btn btn-sm btn-primary float-end" type="submit" value="Upload" name="submit">
 					<br>
-					<hr>
-					<p class="fw-bold">Truncate Table <mark>WARNING!!!</mark></p>
-					<button class="btn btn-sm btn-danger float-end">Truncate</button>
+					<br>
 				</div>
 			</form>
 		</div>

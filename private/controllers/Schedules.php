@@ -12,21 +12,11 @@ class Schedules extends Controller
 			$this->redirect('login');
 		}
 
-	$schedules = new Schedules_model;
-	
+	$schedules 	= 	new Schedules_model;
 
-	// $file = ASSETS."/trimester_3.csv";
-
-	// $csv = transferCSV($file);
-
-	// foreach ( $csv as $v ) {
-	// 	$arr = ["mid_drop"=>$v['mid_drop'],"grp"=>$v['grp'],"schedule"=>$v['schedule'],"ois"=>$v['ois']];
-	// 	$schedules->insertTri(3, $arr);
-	// }
-
-	$schedule1 	= $schedules->scheduleFindAll(1);
-	$schedule2 	= $schedules->scheduleFindAll(2);
-	$schedule3 	= $schedules->scheduleFindAll(3);
+	$schedule1 	= 	$schedules->scheduleFindAll(1);
+	$schedule2 	= 	$schedules->scheduleFindAll(2);
+	$schedule3 	= 	$schedules->scheduleFindAll(3);
 		
 		echo $this->view('schedules', [
 			'schedules1'=>$schedule1,

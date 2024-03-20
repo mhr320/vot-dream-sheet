@@ -176,24 +176,6 @@ function volunteerShiftByDay($vol = array()) {
 	return $shifts;
 }
 
-function transferCSV ( $file ) {
-	$row = 0;
-	$csv = [];
-	if ( ( $handle = fopen ( $file, 'r' ) ) !== FALSE ) {
-		while ( ( $data = fgetcsv ( $handle, 1000, "," ) ) !== FALSE ) {
-			$csv[] = [	
-							"ois" => $data[0],
-							"mid_drop" =>$data[1],
-							"grp"=>$data[2],
-							"schedule"=>$data[3] .','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8].','.$data[9],
-						];
-			$row++;
-		}
-		return $csv;
-	}
-	fclose($handle);
-}
-
 function countGRP( $arr = [], $grp ) {
 	$a=0;
 	foreach($arr as $line) {
@@ -212,3 +194,38 @@ function getGrpCount($schedule = []) {
 	}
 	return $finalCount;
 } 
+
+function transferCSV ( $file ) {
+	$csv = [];
+	if ( ( $handle = fopen ( $file, 'r' ) ) !== FALSE ) {
+		while ( ( $data = fgetcsv ( $handle, 1000, "," ) ) !== FALSE ) {
+			$csv[] = [	
+							"mid_drop" =>$data[1],
+							"grp"=>$data[2],
+							"schedule"=>$data[3] .','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8].','.$data[9],
+							"ois" => $data[0],
+						];
+		}
+		return $csv;
+	}
+	fclose($handle);
+}
+
+function cleanCSV ($num,  $arr = array ( ) ) {
+
+	$schedules = new Schedules_model;
+	
+	foreach ( $arr as $v ) {
+		$arr = ["mid_drop"=>$v['mid_drop'],"grp"=>$v['grp'],"schedule"=>$v['schedule'],"ois"=>$v['ois']];
+		$schedules->insertTri($num, $arr);
+	}
+
+
+}
+
+function getTriNum ( $file ) {
+
+	$num 			= explode ('/', $file);
+	$tablenum 	= substr ( $num[5], -5, 1);
+	return $tablenum;
+	}

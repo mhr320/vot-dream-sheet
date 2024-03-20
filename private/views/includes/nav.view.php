@@ -77,7 +77,7 @@
               <li><a class="dropdown-item" href="../public/signup">ADD USER</a></li>
               <li><a class="dropdown-item" href="../public/passwordupdate">EDIT USER P/W</a></li>
               <li><a class="dropdown-item" href="../public/schedules_management">SCHED MGMT</a></li>
-              <li><a class="dropdown-item" href="#">AVAIL</a></li>
+              <li><a class="dropdown-item" href="../public/sandbox">SANDBOX</a></li>
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="<?=ROOT?>/logout">LOGOUT</a></li>
             <?php else:?>

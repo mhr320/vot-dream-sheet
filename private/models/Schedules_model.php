@@ -16,8 +16,8 @@ class Schedules_model extends Model
 		'schedule',
 	];
 
-	// public $beforeInsert = [
-
+	// protected $beforeInsert = [
+	// 	'prepareCSV'
 	// ];
 
 	public function scheduleFindAll($tablenum, $order = 'asc')
@@ -48,9 +48,12 @@ class Schedules_model extends Model
 		return $data;
 	} 
 
-	public function insertTri($tablenum, $data)
+	public function insertTri($num, $data)
 	{
-		if($tablenum == 1) {
+
+		$tablenum = $num;
+
+		if ( $tablenum == 1) {
 			$this->table = $this->table1;
 		} elseif ($tablenum == 2){
 			$this->table = $this->table2;
@@ -59,33 +62,27 @@ class Schedules_model extends Model
 		}
 
 		//remove unwanted columns
-		if(property_exists($this, 'allowedColumns'))
-		{
-			foreach($data as $key => $column)
-			{
-				if(!in_array($key, $this->allowedColumns))
-				{
+		if(property_exists ( $this, 'allowedColumns' ) ) {
+			foreach ( $data as $key => $column ) {
+				if ( !in_array($key, $this->allowedColumns ) ) {
 					unset($data[$key]);
 				}
 			}
 		}
+
 		//run functions before insert
-		if(property_exists($this, 'beforeInsert'))
-		{
-			foreach($this->beforeInsert as $func)
-			{
-				$data = $this->$func($data);
+		if ( property_exists ( $this, 'beforeInsert' ) ) {
+			foreach ( $this->beforeInsert as $func ) {
+				$data = $this->$func( $data );
 			}
 		}
 
-		$keys = array_keys($data);
-
-		$columns = implode(', ', $keys);
-
-		$values = implode(', :', $keys);
-
-		$query = "insert into $this->table ($columns) values (:$values)";
+		$keys 			= array_keys($data);
+		$columns 	= implode(', ', $keys);
+		$values 		= implode(', :', $keys);
+		$query 		= "insert into $this->table ($columns) values (:$values)";
 
 		return $this->query($query, $data);
 	}
+
 }

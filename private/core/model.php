@@ -94,33 +94,27 @@ class Model extends Database
 
 	public function insert($data)
 	{
+
 		//remove unwanted columns
-		if(property_exists($this, 'allowedColumns'))
-		{
-			foreach($data as $key => $column)
-			{
-				if(!in_array($key, $this->allowedColumns))
-				{
+		if(property_exists ( $this, 'allowedColumns' ) ) {
+			foreach ( $data as $key => $column ) {
+				if ( !in_array($key, $this->allowedColumns ) ) {
 					unset($data[$key]);
 				}
 			}
 		}
+
 		//run functions before insert
-		if(property_exists($this, 'beforeInsert'))
-		{
-			foreach($this->beforeInsert as $func)
-			{
-				$data = $this->$func($data);
+		if ( property_exists ( $this, 'beforeInsert' ) ) {
+			foreach ( $this->beforeInsert as $func ) {
+				$data = $this->$func( $data );
 			}
 		}
 
-		$keys = array_keys($data);
-
+		$keys 		= array_keys($data);
 		$columns = implode(', ', $keys);
-
-		$values = implode(', :', $keys);
-
-		$query = "insert into $this->table ($columns) values (:$values)";
+		$values 	= implode(', :', $keys);
+		$query 	= "insert into $this->table ($columns) values (:$values)";
 
 		return $this->query($query, $data);
 	}
