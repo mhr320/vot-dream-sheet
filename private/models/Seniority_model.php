@@ -83,9 +83,12 @@ class Seniority_model extends Model
 		return false;
 	}
 
-	public function seniorityList($rot='')
-	{
-		$query = "select * from $this->table order by cbu asc, nbu asc, eod asc, rot $rot";
+	public function seniorityList ( $rot='', $cpc = FALSE ) {
+		if ( !$cpc ) {
+			$query = "select * from $this->table order by cbu asc, nbu asc, eod asc, rot $rot";
+		} else {
+			$query = "select * from $this->table where role != 'd' order by cbu asc, nbu asc, eod asc, rot $rot";
+		}
 
 		$data = $this->query($query);
 
@@ -93,10 +96,10 @@ class Seniority_model extends Model
 		{
 			foreach($data as $row)
 			{
-				$row->cbu = date('j M Y', strtotime($row->cbu));
-				$row->nbu = date('j M Y', strtotime($row->nbu));
-				$row->eod = date('j M Y', strtotime($row->eod));
-				$row->scd = date('j M Y', strtotime($row->scd));
+				$row->cbu 	= date('j M Y', strtotime($row->cbu));
+				$row->nbu 	= date('j M Y', strtotime($row->nbu));
+				$row->eod 	= date('j M Y', strtotime($row->eod));
+				$row->scd 	= date('j M Y', strtotime($row->scd));
 			}
 		}
 

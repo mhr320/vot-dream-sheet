@@ -20,6 +20,7 @@ class Volunteerot extends Controller
 		if($rows){
 			$rows = array_unique($rows, SORT_REGULAR);
 		}
+		
 
 		if(count($_POST) > 0){
 

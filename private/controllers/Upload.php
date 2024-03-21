@@ -11,7 +11,8 @@ class Upload extends Controller
 		{
 			$this->redirect('login');
 		}
-			$schedule 	= new Schedules_model;
+			$schedule 		= new Schedules_model;
+			$success 		= array();
 			$errors 			= array();
 			$target_dir 		= $_SERVER['DOCUMENT_ROOT']  . 'tmp/';
 			$target_file 		= $target_dir . basename ( $_FILES["fileToUpload"] ["name"] );
@@ -32,12 +33,6 @@ class Upload extends Controller
 			  	$uploadOK = 0;
 				}
 
-				// // Check if file already exists
-				// if (file_exists($target_file)) {
-			  	// 	$errors = "File already exists.";
-			  	// 	$uploadOK = 0;
-				// }
-				
 				// Overwrite existing file
 				if ( file_exists ( $target_file ) ) {
 					unlink ( $target_file ); 
@@ -49,22 +44,16 @@ class Upload extends Controller
 				// if everything is ok, try to upload file
 				} else {
 				  if ( move_uploaded_file ( $_FILES["fileToUpload"] ["tmp_name"], $target_file ) ) {
-
-				  	// $schedule->insertTri ( $target_file );
-
-				  	$csv 		= transferCSV( $target_file );
-				  	$triNum 	= getTriNum( $target_file );
-				  	cleanCSV($triNum, $csv);
-				    echo "The file ". htmlspecialchars ( basename ( $_FILES["fileToUpload"] ["name"] ) ). " has been uploaded.";
-				    // $this->redirect('schedules_management');
+				  	cleanCSV ( getTriNum ( $target_file ), transferCSV ( $target_file ) );
+				    $successes = ["The file ". htmlspecialchars ( basename ( $_FILES["fileToUpload"] ["name"] ) ). " has been uploaded."];
 				  } else {
 				    $errors = "There was an error uploading your file.";
 					}
 				}
 			}
-
 			echo $this->view('upload', [ 
-				'errors' => $errors,
+				'errors' 		=> $errors,
+				'successes' => $successes,
 				 ] );
 	}
 }

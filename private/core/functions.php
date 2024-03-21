@@ -135,12 +135,14 @@ function show($print_r, $display_name = '')
 {
 
 	echo "<div class='container-fluid p-4'>";
+	echo "<div style='margin-top:60px;'>";
 	echo "**************** ";
 	echo "<pre>";
 	echo "<h6>$display_name</h6>";
 	print_r($print_r);
 	echo "</pre>";
 	echo "**************** ";
+	echo "</div>";
 	echo "</div>";
 }
 
@@ -199,12 +201,24 @@ function transferCSV ( $file ) {
 	$csv = [];
 	if ( ( $handle = fopen ( $file, 'r' ) ) !== FALSE ) {
 		while ( ( $data = fgetcsv ( $handle, 1000, "," ) ) !== FALSE ) {
+			if ( count ( $data ) == 10 ) {
+
 			$csv[] = [	
 							"mid_drop" =>$data[1],
 							"grp"=>$data[2],
 							"schedule"=>$data[3] .','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8].','.$data[9],
 							"ois" => $data[0],
 						];
+
+			} else {
+
+				$csv[] = [	
+								"mid_drop" =>$data[0],
+								"grp"=>$data[1],
+								"schedule"=>$data[2] .','.$data[3].','.$data[4].','.$data[5].','.$data[6].','.$data[7].','.$data[8],
+								"ois" => "",
+							];
+			}
 		}
 		return $csv;
 	}
@@ -229,3 +243,13 @@ function getTriNum ( $file ) {
 	$tablenum 	= substr ( $num[5], -5, 1);
 	return $tablenum;
 	}
+
+//gets initials from different tables
+function oIS ( $data = [], $table = " " ) {
+	$initialsList = [];
+	foreach ( $data as $operating_initials ) {
+		$initials = $operating_initials->ois;
+		$initialsList [ ] = $initials;
+	}
+	return $initialsList;
+}

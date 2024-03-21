@@ -4,7 +4,7 @@
  */
 class Seniority extends Controller
 {
-	private $rot = '';
+	public $rot = '';
 
 	function index()
 	{
