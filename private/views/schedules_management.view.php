@@ -15,7 +15,7 @@
 				<div class="form-group">
 
 					<p class="h5 fw-bold">Trimester (Must Select)</p>	
-					<select class="border-4 border-primary text-center form-control p-3 my-4" name='trimester' id="trimester">
+					<select class="border-4 border-primary text-center form-control p-3 my-2" name='trimester' id="trimester">
 						<option value="" >Select Trimester Here First!!!</span></option>
 						<option value="1">Trimester 1</option>
 						<option value="2">Trimester 2</option>
