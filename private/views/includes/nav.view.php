@@ -41,6 +41,9 @@
           <li class="nav-item">
             <a class="nav-link" href="../public/dashboard">DASHBOARD</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../public/schedules_management">SCHED MGMT</a>
+          </li>
         <?php endif;?>
         <?php if(Auth::logged_in()):?>
           <li class="nav-item">

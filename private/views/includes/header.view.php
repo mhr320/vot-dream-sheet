@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=ASSETS?>/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=ASSETS?>/all.min.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	<script src="<?=JS?>schedule_management.js"></script>
 </head>
 <body>
 	

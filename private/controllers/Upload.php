@@ -16,8 +16,8 @@ class Upload extends Controller
 			$errors 			= array();
 			$target_dir 		= $_SERVER['DOCUMENT_ROOT']  . 'tmp/';
 			$target_file 		= $target_dir . basename ( $_FILES["fileToUpload"] ["name"] );
-			$uploadOK 	= 1;
-			$fileType 		= strtolower ( pathinfo ( $target_file, PATHINFO_EXTENSION ) );
+			$uploadOK 		= 1;
+			$fileType 			= strtolower ( pathinfo ( $target_file, PATHINFO_EXTENSION ) );
 
 			if ( isset ( $_POST [ 'submit' ] ) ) {
 

@@ -4,7 +4,7 @@
  */
 class Schedules_model extends Model
 {
-	public $table 		= '';
+	public $table 	= '';
 	public $table1 	= 'trimester_1';
 	public $table2 	= 'trimester_2';
 	public $table3 	= 'trimester_3';
@@ -31,6 +31,7 @@ class Schedules_model extends Model
 		}
 		$query 	= "select * from $this->table order by grp $order";
 		$data 		=  $this->query($query);
+		
 		//run functions after select
 		if(is_array($data))
 		{
@@ -70,6 +71,7 @@ class Schedules_model extends Model
 				$data = $this->$func( $data );
 			}
 		}
+
 		$keys 			= array_keys($data);
 		$columns 	= implode(', ', $keys);
 		$values 		= implode(', :', $keys);
@@ -77,32 +79,84 @@ class Schedules_model extends Model
 		return $this->query($query, $data);
 	}
 
-	public function updateNormal ( $id, $data ) {
+	public function updateNormal ( $triNum, $id, $data ) {
+		$this->table = 'trimester_'.$triNum;
 		$str = "";
 		foreach ($data as $key => $value) {
 			$str .= $key . "=:" . $key . ",";
 		}
 		$str 				= trim($str, ",");
 		$data['id'] 	= $id;
-		$query 		= "update $this->table1 set $str where id = :id";
+		$query 		= "update $this->table set $str where id = :id";
 		return $this->query($query, $data);
 	}
 
-	public function whereTri1OisBlank($column, $value) {
+	public function whereTriOisBlank($triNum, $column, $value) {
+		$this->table = 'trimester_'.$triNum;
 		$query 	= addslashes($column);
-		$query 	= "select id from $this->table1 where $column = :value && ois is null limit 1"; 
+		$query 	= "select id from $this->table where $column = :value && ois is null limit 1"; 
 		$data 		= $this->query($query,[
 						'value'=>$value,
 						]);
 		return $data;
 	}
 
-	public function whereTri1OisNotBlank($column, $value) {
+	public function whereTriOisNotBlank ( $triNum, $column, $value ) {
+		$this->table = 'trimester_'.$triNum;
+		// echo $this->table;
 		$query 	= addslashes($column);
-		$query = "select id from $this->table1 where $column = :value"; 
+		$query 	= "select id from $this->table where $column = :value"; 
 		$data 		= $this->query($query,[
 						'value'=>$value,
 						]);
 		return $data;
+	}
+
+	public function nullTrimesterOis ( $triNum ) {
+		$this->table = 'trimester_'.$triNum;
+		$query = "update $this->table set ois = null";
+		$data = $this->query($query);
+		return $data;
+	}
+
+	public function validateSchedMgmt( $data ) {
+		$arrCount 	= count ( $data );
+		$i 					= 0;
+
+		$this->errors = array ( );
+
+		//check if entire array is equal to NULL
+		foreach ( $data as $key => $val ) {
+			if ( $val == NULL ) {
+				$i++;
+			} else {
+				$i--;
+			}
+			if ( $i == $arrCount ) {
+				$this->errors['fullArray'] = "Nothing was selected, try again";
+			}
+		}
+
+		//check Trimester chosen
+		if ( $data['trimester'] == NULL || empty ( $data['trimester'] ) ) {
+			$this->errors [ 'trimester' ] = "You must choose a Trimester";
+		} 
+
+		//check Unassign initials/trimester pair
+		if ( !empty ( $data [ 'oisRem' ] ) && ($data['trimester'] == NULL || empty ( $data['trimester'] ) ) ) {
+			$this->errors [ 'RemoveInitials' ] = "You must select Trimester in order to remove initials from a line"; 
+		}
+
+		//check Assign CPC to Line
+		if ( isset ( $data [ 'schedule' ] ) && !isset ( $data [ 'ois' ] ) ) {
+			$this->errors [ 'Assign' ] = "Both Controller & Line must be selected.";
+		} elseif ( !isset ( $data [ 'schedule' ] ) && isset ( $data [ 'ois' ] ) ) {
+			$this->errors [ 'Assign' ] = "Both Controller & Trimester Line must be selected.";
+		}
+
+		if ( count ( $this->errors ) == 0 ) {	
+			return true;
+		}
+		return false;
 	}
 }

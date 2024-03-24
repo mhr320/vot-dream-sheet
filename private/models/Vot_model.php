@@ -35,8 +35,7 @@ class Vot_model extends Model
 		return $data;
 	}
 
-	public function validate($DATA)
-	{
+	public function validate($DATA) {
 
 		$this->errors = array();
 

@@ -19,6 +19,19 @@ class Settings extends Controller
 			$this->view('home');
 		}
 
+		$schedule = new Schedules_model;
+
+		if ( count ( $_POST ) > 0 ) {
+
+			if ( $_POST [ 'nullTriOis1' ] == 1) {
+				$schedule->nullTrimesterOis(1);
+			} elseif ( $_POST [ 'nullTriOis2' ] == 2 ) {
+				$schedule->nullTrimesterOis(2);
+			} elseif ( $_POST [ 'nullTriOis3' ] == 3 ) {
+				$schedule->nullTrimesterOis(3);
+			}
+		}
+
 
 	}
 }

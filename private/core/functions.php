@@ -11,7 +11,7 @@ function checkOddEven($number)
 	}
 }
 
-function get_var($key, $default = "")
+function get_var($key, $default = NULL)
 {
 	if(isset($_POST[$key]))
 	{
@@ -149,12 +149,14 @@ function show($print_r, $display_name = '')
 function showv($var_dump, $display_name = '')
 {
 	echo "<div class='container-fluid p-4'>";
+	echo "<div style='margin-top:60px;'>";
 	echo "**************** ";
 	echo "<pre>";
 	echo "<h6>$display_name</h6>";
 	var_dump($var_dump);
 	echo "</pre>";
 	echo "**************** ";
+	echo "</div>";
 	echo "</div>";
 }
 
