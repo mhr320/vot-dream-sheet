@@ -1,39 +1,31 @@
 <?php
-/**
- * Payperiod controller
- */
+
+// Payperiod controller
+ 
 class Payperiod extends Controller
 {
 	
-	function index()
-	{
+	function index ( ) {
 
-		if(!Auth::logged_in())
-		{
-			$this->redirect('login');
+		if ( !Auth::logged_in ( ) ) {
+			$this->redirect ( 'login' );
 		}
-		
-		$pp_start = '17 Dec 2023';
-		$pp_end   = '30 Dec 2023';
 
-		$pp = get_payperiods($pp_start,$pp_end);
+		$pp_start 		= '17 Dec 2023';
+		$pp_end   	= '30 Dec 2023';
+		$pp 				= get_payperiods ( $pp_start,$pp_end );
+		// $user 			= $this->load_model('Payperiod_model');
 
-		
-
-		$user = $this->load_model('Payperiod_model');
-
-		if(Auth::checkSuper())
-		{
-			echo $this->view('payperiod',[
-			'paypers'=>$pp,
+		if ( Auth::checkSuper ( ) ) {
+			echo $this->view ( 'payperiod', [
+			'paypers' => $pp,
 			]);
-		}elseif(Auth::checkAdmin())
-		{
-			echo $this->view('payperiod',[
-			'paypers'=>$pp,
-		]);
-		}else{
-			$this->redirect('home');
+		} elseif ( Auth::checkAdmin ( ) ) {
+			echo $this->view('payperiod', [
+			'paypers' => $pp,
+			]);
+		} else {
+			$this->redirect ( 'home' );
 		}
 	}
 }

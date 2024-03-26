@@ -108,23 +108,23 @@ function views_path($view, $data = array())
 		}
 }
 
-function getVolDays($pay_pers, $rows, $pp){
+function getVolDays ( $pay_pers, $rows, $pp ) {
 
-	$volunteerDays = array();
+	$volunteerDays = array ( );
 
-	foreach($pay_pers[$pp] as $day) {
+	foreach ( $pay_pers [ $pp ] as $day ) {
 
-		foreach($rows as $k => $v) {
+		foreach ( $rows as $k => $v ) {
 
-		 	if(strtotime($day) == strtotime($v->date) && (int)$v->shift_del != 1 ) {
+		 	if ( strtotime ( $day ) == strtotime ( $v->date ) && ( int ) $v->shift_del != 1 ) {
 
-		 		$eachDay = [];
+		 		$eachDay = [ ];
 
-		 		$eachDay['date']				=	$day;
-		 		$eachDay['shift']				=	$v->shift;
-		 		$eachDay['ois']					=	$v->ois;
+		 		$eachDay [ 'd' ]			=	$day;
+		 		$eachDay [ 's' ]				=	$v->shift;
+		 		$eachDay [ 'i' ]				=	$v->ois;
 
-		 		$volunteerDays[]				=	$eachDay;
+		 		$volunteerDays[ ]			=	$eachDay;
 		 	}
 		 }
 	}
@@ -160,24 +160,65 @@ function showv($var_dump, $display_name = '')
 	echo "</div>";
 }
 
-function volunteerShiftByDay($vol = array()) {
-	$arr 		= [];
-	$shifts = [];
-	$try = [];
+function volunteerShiftByDay ( $vol = [ ], $db = [ ] ) {
+
+	$arr 		= [ ];
+	$am 		= [ ];
+	$pm 		= [ ];
+	$m 		= [ ];
+	$vs 		= [ ];
+
 	foreach ( $vol as $k => $v ) {
-		$vdate 	= $v['date'] ?? "";
-		$vshift 		= $v['shift'] ?? "";
-		$vois 		= $v['ois'] ?? "";
-		@$arr[$vdate] .= $vshift."-".$vois.",";	//@ suppresses the errror undefined array type
+		
+		$vdate 	= $v [ 'd' ];
+		$vshift 	= $v [ 's' ];
+		$vois 	= $v [ 'i' ];
+
+		if ( $vshift == 'am' ) {
+
+			$am[ ] = $vois;
+
+		} elseif ( $vshift == 'pm' ) {
+
+			$pm[ ] = $vois;
+
+		} elseif ( $vshift == 'm' ) {
+
+			$m[ ] = $vois;
+
+		}
+
+		$arr [$vdate] = ['AM'=>$am,'PM'=>$pm,'M'=>$m];
+
 	}
-	foreach( $arr as $day => $vols ) {
-		$shiftOis = explode('-', $vols);
-		$shft = $shiftOis[0];
-		$ois = $shiftOis[1];
-		$try[] = $shft .$ois.',';
-		$shifts[$day] = $try;
-	}
-	return $shifts;
+
+	return $arr;
+}
+
+function volunteer_rearrange_array( $arr = [], $output = [] ) {
+
+	array_walk ( $arr, function ( $item ) use ( &$output ) {
+		if ( array_key_exists ( $item["d"], $output ) && array_key_exists ( $item["s"], $output [ $item["d"] ] ) ) {
+		    $output [ $item["d"] ] [ $item ["s"] ] .= ", " . $item ["i"];
+		} else {
+		    $output[$item["d"]][$item["s"]] = $item["i"];
+		}
+	});
+	return $output;
+}
+
+function datesOnlyWithVolunteerShifts($vol=[]) {
+
+	$arr = [];
+	$new =[];
+
+	foreach ( $vol as $key => $val ) {
+
+		$new = $val['d']; 
+		$arr[] = $new;
+	} 
+
+	return $arr;
 }
 
 function countGRP( $arr = [], $grp ) {
